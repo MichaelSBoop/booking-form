@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <title>Booking form</title>
+  </head>
+  <body>
+    <form onSubmit="sendData(event)">
+      <div class="confirm">
+        <div class="question-wrapper">
+          <h1>Отправить форму?</h1>
+        </div>
+        <div class="button-wrapper">
+          <button type="submit" onclick="returnToForm('submit')">
+            Отправить
+          </button>
+          <button type="button" onclick="returnToForm('submit')">Отмена</button>
+        </div>
+      </div>
+      <div class="reset">
+        <div class="question-wrapper">
+          <h1>Вы уверены, что хотите очистить форму?</h1>
+        </div>
+        <div class="button-wrapper">
+          <button type="reset" onclick="returnToForm('reset'); customReset()">
+            Очистить
+          </button>
+          <button type="button" onclick="returnToForm('reset')">Отмена</button>
+        </div>
+      </div>
+      <header>Форма для бронирования переговорной комнаты</header>
+      <div class="top">
+        <div class="place">
+          <label for="tower">Башня</label>
+          <select required name="tower" id="tower">
+            <option value="" disabled selected hidden>Выберите башню</option>
+            <option value="A">Башня А</option>
+            <option value="B">Башня Б</option>
+          </select>
+          <label for="floor">Этаж</label>
+          <select required name="floor" id="floor">
+            <option value="" disabled selected hidden>Выберите этаж</option>
+          </select>
+          <label for="room">Номер комнаты</label>
+          <select required name="room" id="room">
+            <option value="" disabled selected hidden>Выберите комнату</option>
+          </select>
+        </div>
+        <div class="date-time">
+          <div class="date">
+            <label for="date">Выберите дату</label>
+            <input required type="date" name="date" id="date" />
+          </div>
+          <div class="time">
+            <label class="label" for="hours-start">Выберите время</label>
+            <div class="time-start-wrap">
+              <label for="hours-start">С</label>
+              <select name="hoursStart" id="hours-start"></select>
+              <span>:</span>
+              <select name="minsStart" id="mins-start"></select>
+            </div>
+            <div class="time-end-wrap">
+              <label for="hours-end">По</label>
+              <select name="hoursEnd" id="hours-end"></select>
+              <span>:</span>
+              <select name="minsEnd" id="mins-end"></select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <label for="comment">Ваши пожелания</label>
+        <textarea
+          name="comment"
+          id="comment"
+          placeholder="Оставьте комментарий к брони!"
+          wrap="hard"
+        ></textarea>
+        <div class="button-wrapper">
+          <button
+            type="button"
+            onclick="askConfirmation('submit')"
+            id="initial-submit"
+          >
+            Отправить
+          </button>
+          <button
+            type="button"
+            onclick="askConfirmation('reset')"
+            id="initial-reset"
+          >
+            Очистить
+          </button>
+        </div>
+      </div>
+    </form>
+  </body>
+  <script defer src="index.js"></script>
+</html>
